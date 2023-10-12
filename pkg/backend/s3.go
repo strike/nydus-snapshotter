@@ -18,7 +18,6 @@ import (
 	"github.com/aws/aws-sdk-go-v2/credentials"
 	"github.com/aws/aws-sdk-go-v2/feature/s3/manager"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
-	"github.com/aws/aws-sdk-go-v2/service/s3/types"
 	"github.com/containerd/containerd/content"
 	"github.com/containerd/containerd/errdefs"
 	"github.com/opencontainers/go-digest"
@@ -144,7 +143,6 @@ func (b *S3Backend) Push(ctx context.Context, cs content.Store, desc ocispec.Des
 		Bucket:            aws.String(b.bucketName),
 		Key:               aws.String(blobObjectKey),
 		Body:              reader,
-		ChecksumAlgorithm: types.ChecksumAlgorithmCrc32,
 	}); err != nil {
 		return errors.Wrap(err, "push blob to s3 backend")
 	}
