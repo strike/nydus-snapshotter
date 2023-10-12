@@ -1115,7 +1115,7 @@ func MergeLayers(ctx context.Context, cs content.Store, descs []ocispec.Descript
 
 	bootstrapInfo, err := cs.Info(ctx, compressedDgst)
 	if err != nil {
-		return nil, nil, errors.Wrap(err, "get info from content store")
+		return nil, nil, errors.Wrap(err, "get info from content store here2")
 	}
 
 	originalBlobDigests := <-originalBlobDigestChan
@@ -1131,7 +1131,7 @@ func MergeLayers(ctx context.Context, cs content.Store, descs []ocispec.Descript
 	for idx, blobDigest := range blobDigests {
 		blobInfo, err := cs.Info(ctx, blobDigest)
 		if err != nil {
-			return nil, nil, errors.Wrap(err, "get info from content store")
+			return nil, nil, errors.Wrap(err, "get info from content store here1")
 		}
 		blobDesc := ocispec.Descriptor{
 			Digest:    blobDigest,
